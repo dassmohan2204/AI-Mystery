@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import * as controller from '../controllers/mystery.controller.js';
+const router = Router();
+const wrap = fn => (req, res, next) => Promise.resolve(fn(req, res, next)).catch(next);
+router.post('/', wrap(controller.create));
+router.get('/:caseId', wrap(controller.get));
+router.patch('/:caseId/progress', wrap(controller.saveProgress));
+router.post('/:caseId/accusation', wrap(controller.accuse));
+router.get('/:caseId/solution', wrap(controller.solution));
+export default router;
