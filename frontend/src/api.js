@@ -1,5 +1,5 @@
 import axios from 'axios';
-const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || 'http://localhost:4000/api/v1' });
+const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || '/api/v1' });
 export const getCase = id => api.get(`/mysteries/${id}`).then(r => r.data.data);
 export const createCase = payload => api.post('/mysteries', payload).then(r => r.data.data);
 export const saveProgress = (id, data) => api.patch(`/mysteries/${id}/progress`, data);
